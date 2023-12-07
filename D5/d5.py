@@ -1,7 +1,6 @@
 import requests
 from multiprocessing import Pool
 import time
-from functools import reduce
 
 
 def rule_from_string(string):
