@@ -30,7 +30,6 @@ if __name__ == "__main__":
     winning_strategies = list(map(lambda a: a.record_beating_strategies(), races))
     print(reduce(lambda a, b: a * b, map(len, winning_strategies), 1))
 
-
     # Part 2
     race = Race(56977875, 546192711311139)
     print(len(race.record_beating_strategies()))
