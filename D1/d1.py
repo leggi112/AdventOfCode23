@@ -1,5 +1,5 @@
-import requests
 from functools import reduce
+import aoc_utils
 
 
 def sanitize_string(string: str) -> list:
@@ -25,14 +25,17 @@ def isolate_calibration(input_string: str) -> int:
 
     if first is None:
         return 0
+
     return first * 10 + last
 
 
 if __name__ == "__main__":
-    cookies = {"session": "<Enter session-cookie>"}
-    source = requests.get("https://adventofcode.com/2023/day/1/input", cookies=cookies)
-    part_list = source.text.split("\n")
+    source = aoc_utils.get_puzzle_string(1)
+    part_list = source.split("\n")
 
-    part_list = list(map(sanitize_string, part_list))
-    cal_values = list(map(isolate_calibration, part_list))
-    print(reduce(lambda a, b: a+b, cal_values, 0))
+    cal_values = map(isolate_calibration, part_list)
+    print("Part 1:", reduce(lambda a, b: a+b, cal_values, 0))
+
+    part_list = map(sanitize_string, part_list)
+    cal_values = map(isolate_calibration, part_list)
+    print("Part 2:", reduce(lambda a, b: a + b, cal_values, 0))
