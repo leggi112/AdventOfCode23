@@ -1,4 +1,4 @@
-import requests
+import aoc_utils
 
 
 def compare_cards(card1, card2):
@@ -59,11 +59,7 @@ class Hand:
 
 
 if __name__ == "__main__":
-    cookies = {"session": "<Enter session-cookie>"}
-    source_string = requests.get("https://adventofcode.com/2023/day/7/input", cookies=cookies)
-
-    # Remove the last \n
-    source_string = source_string.text[:-1]
+    source_string = aoc_utils.get_puzzle_string(7)
     source_string = source_string.split("\n")
 
     hand_list = list(map(lambda a: Hand(a[0], int(a[1])),

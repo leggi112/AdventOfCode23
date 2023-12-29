@@ -1,5 +1,5 @@
-import requests
 from functools import reduce
+import aoc_utils
 
 
 def find_next(seq):
@@ -21,11 +21,8 @@ def find_prev(seq):
 
 
 if __name__ == "__main__":
-    cookies = {"session": "<Enter session-cookie>"}
-    source_string = requests.get("https://adventofcode.com/2023/day/9/input", cookies=cookies)
 
-    # Remove the last \n
-    source_string = source_string.text[:-1]
+    source_string = aoc_utils.get_puzzle_string(9)
     source = source_string.split("\n")
     sequences = list(map(lambda a: list(map(int, a.split(" "))), source))
 

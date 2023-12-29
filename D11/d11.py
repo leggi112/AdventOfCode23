@@ -1,5 +1,5 @@
-import requests
 from functools import reduce
+import aoc_utils
 
 
 def transpose(array):
@@ -54,12 +54,7 @@ def get_expanded_coords(coords, factor, gap_list):
 
 
 if __name__ == '__main__':
-    cookies = {"session": "<Enter session-cookie>"}
-    source_string = requests.get("https://adventofcode.com/2023/day/11/input", cookies=cookies)
-
-    # Remove the last \n
-    source_string = source_string.text[:-1]
-
+    source_string = aoc_utils.get_puzzle_string(11)
     source_string = source_string.splitlines()
 
     universe = list(map(lambda a: list(a), source_string))
