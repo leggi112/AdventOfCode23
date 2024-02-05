@@ -10,7 +10,7 @@ def rule_from_string(string):
 
 class Rule:
 
-    def __init__(self,dest, source, length):
+    def __init__(self, dest, source, length):
 
         self.dest = dest
         self.source = source
