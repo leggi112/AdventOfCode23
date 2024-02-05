@@ -1,5 +1,5 @@
-import requests
 from functools import reduce
+import aoc_utils
 
 
 class Game:
@@ -46,12 +46,11 @@ class Game:
 if __name__ == "__main__":
     content = {"red": 12, "green": 13, "blue": 14}
 
-    cookies = {"session": "<Enter session-cookie>"}
-    source = requests.get("https://adventofcode.com/2023/day/2/input", cookies=cookies)
-    part_list = source.text.split("\n")
+    source = aoc_utils.get_puzzle_string(2)
+    part_list = source.split("\n")
 
-    games = list(map(lambda string: Game(string, content), part_list))
-    valid_games = list(filter(lambda g: g.evaluate_game(), games))
-    valid_game_ids = list(map(lambda g: g.id, valid_games))
-    print(reduce(lambda a, b: a+b, valid_game_ids, 0))
+    games = map(lambda string: Game(string, content), part_list)
+    valid_games = filter(lambda g: g.evaluate_game(), games)
+    valid_game_ids = map(lambda g: g.id, valid_games)
+    print("Task 1:", reduce(lambda a, b: a+b, valid_game_ids, 0))
 
